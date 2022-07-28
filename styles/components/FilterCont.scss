@@ -1,0 +1,22 @@
+.filterCont{
+  border-bottom: 1px solid #dedede;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 7px;
+  margin: 15px 0px;
+
+  p{
+    margin: 0;
+    font-size: 12px;
+  }
+}
+.sortCont{
+  display: flex;
+
+  button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
