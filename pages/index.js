@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css';
 
 import ProductCard from '../components/ProductCard';
 import FilterCont from '../components/FilterCont';
+import HamburgerMenu from '../components/HamburgerMenu';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -10,9 +11,10 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 export default function Home() {
   return (
     <div className={styles.container}>
-      <div className={styles.hamburger}>
+      {/* <div className={styles.hamburger}>
         <FontAwesomeIcon icon={faBars} size='lg' />
-      </div>
+      </div> */}
+      <HamburgerMenu />
       <FilterCont />
       <ProductCard />
     </div>

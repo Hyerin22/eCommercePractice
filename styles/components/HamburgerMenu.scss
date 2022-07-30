@@ -1,0 +1,61 @@
+.hamburgerCont{
+
+}
+#bg{
+  background: #ffffff;
+  width: 10rem;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  transition-timing-function: cubic-bezier(10,2,3,1);
+  transform: translateX(-50rem);
+  top: 0;
+  z-index: 0;
+  transition: 0.5s;
+  box-shadow: 3px 4px 10px rgba(199, 199, 199, 0.21);
+}
+
+#openSidebarMenu {
+  display: none;
+}
+
+#openSidebarMenu:checked ~ #bg {
+  transform: translateX(0rem);
+}
+
+#hamburger{
+  position: absolute;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1rem;
+  left: 1rem;
+  top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  div{
+    height: 2px;
+    background-color: #000;
+    transition: 0.5s;
+    z-index: 999;
+  }
+}
+
+#openSidebarMenu:checked ~ #hamburger > div {
+  // background-color: #fff;
+}
+
+#openSidebarMenu:checked ~ #hamburger > div:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+#openSidebarMenu:checked ~ #hamburger > div:nth-child(2) {
+  opacity: 0;
+}
+#openSidebarMenu:checked ~ #hamburger > div:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+
+
+
