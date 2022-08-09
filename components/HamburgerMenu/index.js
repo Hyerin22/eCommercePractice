@@ -11,7 +11,7 @@ export default function HamburgerMenu({}) {
   return (
     <div className="hamburgerCont">
       <input type="checkbox" id="openSidebarMenu" />
-      <label id="hamburger" for="openSidebarMenu">
+      <label id="hamburger" htmlFor="openSidebarMenu">
         <div></div>
         <div></div>
         <div></div>
