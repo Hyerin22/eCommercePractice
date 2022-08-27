@@ -1,7 +1,12 @@
 .container {
-  /* padding: 0 2rem; */
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
 }
-
+.homeDisplay{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 8px;
+}
 /* .hamburger{
   padding: 20px;
 } */

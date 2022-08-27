@@ -31,8 +31,8 @@ export default function Home() {
   useEffect(() => {
     const GetProducts = async () => {
       const result = await axios.get("https://dummyjson.com/products");
-      console.log(result);
-      setProducts(result.data);
+      console.log(result.data);
+      setProducts(result.data.products);
     };
     GetProducts();
   }, []);
@@ -42,16 +42,19 @@ export default function Home() {
       {/* <div className={styles.hamburger}>
         <FontAwesomeIcon icon={faBars} size="lg" />
       </div> */}
-      {/* <HamburgerMenu /> */}
-      {/* <FilterCont /> */}
-      {
-        products.map((o,i)=>(
-          <div key={i}>
-            <ProductCard id={o.id} thumbnail={o.thumbnail} title={o.title} price={o.price} />
-          </div>
+      <HamburgerMenu />
+      <FilterCont />
+      <div className={styles.homeDisplay}>
+        {
+          products.map((o,i)=>(
+            <div key={i}>
+              <ProductCard id={o.id} thumbnail={o.thumbnail} title={o.title} price={o.price} />
+            </div>
 
-        ))
-      }
+          ))
+        }
+
+      </div>
     </div>
   );
 }
