@@ -27,6 +27,7 @@ const fakeData = [
 
 export default function Home() {
   const [products, setProducts] = useState(fakeData);
+  const [totalSum, setTotalSum] = useState(0);
 
   useEffect(() => {
     const GetProducts = async () => {
@@ -37,18 +38,31 @@ export default function Home() {
     GetProducts();
   }, []);
 
+  // useEffect(()=>{
+  //   const total = result.reduce((acc, o) => acc + o.amount, 0);
+  //   setTotalSum(total);
+  // },[products])
+
   return (
     <div className={styles.container}>
       {/* <div className={styles.hamburger}>
         <FontAwesomeIcon icon={faBars} size="lg" />
       </div> */}
       <HamburgerMenu />
-      <FilterCont />
+      <FilterCont 
+        totalNumber = {totalSum}
+      />
       <div className={styles.homeDisplay}>
         {
           products.map((o,i)=>(
             <div key={i}>
-              <ProductCard id={o.id} thumbnail={o.thumbnail} title={o.title} price={o.price} />
+              <ProductCard 
+                id={o.id} 
+                thumbnail={o.thumbnail} 
+                title={o.title} 
+                price={o.price} 
+                // amount={o.amount}
+                />
             </div>
 
           ))
