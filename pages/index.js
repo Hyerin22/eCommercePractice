@@ -28,6 +28,8 @@ const fakeData = [
 export default function Home() {
   const [products, setProducts] = useState(fakeData);
   const [totalSum, setTotalSum] = useState(0);
+  const [curPage, setCurPage] = useState([]);
+  const [deviceNum, setdeviceNum] = useState();
 
   useEffect(() => {
     const GetProducts = async () => {
@@ -43,32 +45,74 @@ export default function Home() {
   //   setTotalSum(total);
   // },[products])
 
+  // pagination =================================================
+  const PageClick = async (p) => {
+    const result = await axios.get("api/data", {
+      params: {
+        page: p,
+        num: 15,
+      },
+    });
+    // console.log(res.data);
+    setProducts(result.data.lists);
+    setCurPage(p);
+    setdeviceNum(result.data.numDevices);
+  };
+
+  var butt_arr = [];
+  var ind = 1;
+  for (var i = 0; i < deviceNum; i += 15) {
+    butt_arr.push(
+      <button
+        className={styles.pagiButton}
+        onClick={PageClick.bind(this, ind)}
+        style={{ backgroundColor: curPage === ind ? "pink" : "white" }}
+      >
+        {ind}
+      </button>
+    );
+    ind++;
+  }
+
+  var numpages = Math.ceil(deviceNum/10);
+  if(curPage == 1) {
+    var lastpage = curPage+4;
+  } else if(curPage == 2){
+    var lastpage = curPage+3;
+  } else {
+    var lastpage = curPage+2;
+  }
+  if(lastpage > numpages){
+    lastpage = numpages;
+  }
+
+  butt_arr = butt_arr.slice(curPage-3 < 0 ? 0 : curPage-3, lastpage);
+
+  // butt_arr = butt_arr.slice(curPage - 5 < 0 ? 0 : curPage - 5, curPage + 5);
+  // butt_arr = butt_arr.slice(0, 10);
+
   return (
     <div className={styles.container}>
       {/* <div className={styles.hamburger}>
         <FontAwesomeIcon icon={faBars} size="lg" />
       </div> */}
       <HamburgerMenu />
-      <FilterCont 
-        totalNumber = {totalSum}
-      />
+      <FilterCont totalNumber={totalSum} />
       <div className={styles.homeDisplay}>
-        {
-          products.map((o,i)=>(
-            <div key={i}>
-              <ProductCard 
-                id={o.id} 
-                thumbnail={o.thumbnail} 
-                title={o.title} 
-                price={o.price} 
-                // amount={o.amount}
-                />
-            </div>
-
-          ))
-        }
-
+        {products.map((o, i) => (
+          <div key={i}>
+            <ProductCard
+              id={o.id}
+              thumbnail={o.thumbnail}
+              title={o.title}
+              price={o.price}
+              // amount={o.amount}
+            />
+          </div>
+        ))
+      }
       </div>
+      <div className={styles.pagiCont}>{butt_arr}</div>
     </div>
   );
 }

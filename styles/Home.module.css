@@ -11,6 +11,21 @@
   padding: 20px;
 } */
 
+.pagiCont{
+  display:flex;
+  justify-content: space-evenly;
+  max-width: 600px;
+  margin-bottom: 50px;
+}
+
+.pagiButton{
+  border: 2px solid #8CC8A2;
+  padding: 10px 15px 10px 15px;
+  margin-right: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
