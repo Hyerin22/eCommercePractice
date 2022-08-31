@@ -31,6 +31,7 @@ export default function Home() {
   const [curPage, setCurPage] = useState([]);
   const [deviceNum, setdeviceNum] = useState();
 
+
   useEffect(() => {
     const GetProducts = async () => {
       const result = await axios.get("https://dummyjson.com/products");
@@ -44,6 +45,9 @@ export default function Home() {
   //   const total = result.reduce((acc, o) => acc + o.amount, 0);
   //   setTotalSum(total);
   // },[products])
+
+
+  // after clicking hamburger menu change the main bg color
 
   // pagination =================================================
   const PageClick = async (p) => {
@@ -92,7 +96,9 @@ export default function Home() {
   // butt_arr = butt_arr.slice(0, 10);
 
   return (
-    <div className={styles.container}>
+    <div 
+      className={styles.container}
+      >
       {/* <div className={styles.hamburger}>
         <FontAwesomeIcon icon={faBars} size="lg" />
       </div> */}

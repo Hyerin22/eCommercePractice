@@ -1,0 +1,16 @@
+.listCont {
+  margin-top: 70px;
+  margin-left: 20px;
+
+  p{
+    color: #333333;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10px 0px;
+
+    &:hover {
+      color: #FF6914;
+    }
+  }
+
+}
