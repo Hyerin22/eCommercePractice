@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import HamburgerList from "../HamburgerList";
 
@@ -34,6 +35,8 @@ export default function HamburgerMenu(props) {
 
   // }
 
+  const router = useRouter();
+
   return (
     <div className="hamburgerCont" onClick={onClick}>
       <input type="checkbox" id="openSidebarMenu" />
@@ -43,9 +46,13 @@ export default function HamburgerMenu(props) {
         <div></div>
       </label>
       <nav id="bg">
+        <div className="forMargin" />
         {category.map((o, i) => (
           <div key={i}>
-            <HamburgerList title={o} />
+            <HamburgerList 
+              id = {o.id}
+              title={o}
+            />
           </div>
         ))}
       </nav>

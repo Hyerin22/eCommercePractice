@@ -3,13 +3,18 @@ import { useRouter } from 'next/router';
 
 export default function HamburgerList(props) {
   const {
-    title
+    title,
+    id = 1
   } = props;
 
   const router = useRouter();
 
   return (
-    <div className='listCont'>
+    <div
+      onClick={() => {
+        router.push("/product/" + id)
+      }}
+      className='listCont'>
       <p>{title}</p>
     </div>
   )
