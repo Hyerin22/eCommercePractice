@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 export default function HamburgerList(props) {
   const {
-    title = 'category'
+    title
   } = props;
 
   const router = useRouter();

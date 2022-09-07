@@ -90,6 +90,7 @@ export default function Home() {
     lastpage = numpages;
   }
 
+  console.log(butt_arr)
   butt_arr = butt_arr.slice(curPage-3 < 0 ? 0 : curPage-3, lastpage);
 
   // butt_arr = butt_arr.slice(curPage - 5 < 0 ? 0 : curPage - 5, curPage + 5);
