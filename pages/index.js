@@ -31,7 +31,6 @@ export default function Home() {
   const [curPage, setCurPage] = useState([]);
   const [deviceNum, setdeviceNum] = useState();
 
-
   useEffect(() => {
     const GetProducts = async () => {
       const result = await axios.get("https://dummyjson.com/products");
@@ -45,7 +44,6 @@ export default function Home() {
   //   const total = result.reduce((acc, o) => acc + o.amount, 0);
   //   setTotalSum(total);
   // },[products])
-
 
   // after clicking hamburger menu change the main bg color
 
@@ -78,46 +76,46 @@ export default function Home() {
     ind++;
   }
 
-  var numpages = Math.ceil(deviceNum/10);
-  if(curPage == 1) {
-    var lastpage = curPage+4;
-  } else if(curPage == 2){
-    var lastpage = curPage+3;
+  var numpages = Math.ceil(deviceNum / 10);
+  if (curPage == 1) {
+    var lastpage = curPage + 4;
+  } else if (curPage == 2) {
+    var lastpage = curPage + 3;
   } else {
-    var lastpage = curPage+2;
+    var lastpage = curPage + 2;
   }
-  if(lastpage > numpages){
+  if (lastpage > numpages) {
     lastpage = numpages;
   }
 
-  console.log(butt_arr)
-  butt_arr = butt_arr.slice(curPage-3 < 0 ? 0 : curPage-3, lastpage);
+  console.log(butt_arr);
+  butt_arr = butt_arr.slice(curPage - 3 < 0 ? 0 : curPage - 3, lastpage);
 
   // butt_arr = butt_arr.slice(curPage - 5 < 0 ? 0 : curPage - 5, curPage + 5);
   // butt_arr = butt_arr.slice(0, 10);
 
   return (
-    <div 
-      className={styles.container}
-      >
+    <div className={styles.container}>
       {/* <div className={styles.hamburger}>
         <FontAwesomeIcon icon={faBars} size="lg" />
       </div> */}
       <HamburgerMenu />
-      <FilterCont totalNumber={totalSum} />
-      <div className={styles.homeDisplay}>
-        {products.map((o, i) => (
-          <div key={i}>
-            <ProductCard
-              id={o.id}
-              thumbnail={o.thumbnail}
-              title={o.title}
-              price={o.price}
-              // amount={o.amount}
-            />
-          </div>
-        ))
-      }
+      <div className={styles.content}>
+        <FilterCont totalNumber={totalSum} />
+        <div className={styles.homeDisplay}>
+          {products.map((o, i) => (
+            <div key={i}>
+              <ProductCard
+                id={o.id}
+                desc = {o.description}
+                thumbnail={o.thumbnail}
+                title={o.title}
+                price={o.price}
+                // amount={o.amount}
+              />
+            </div>
+          ))}
+        </div>
       </div>
       <div className={styles.pagiCont}>{butt_arr}</div>
     </div>

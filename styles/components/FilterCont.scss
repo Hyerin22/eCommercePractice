@@ -5,7 +5,7 @@
   align-items: baseline;
   padding: 7px;
   margin: 55px 0px 15px 0px;
-
+  
   p{
     margin: 0;
     font-size: 12px;
@@ -13,10 +13,14 @@
 }
 .sortCont{
   display: flex;
-
+  
   button{
     background-color: transparent;
     border: none;
     cursor: pointer;
   }
+}
+
+@media screen and (min-width: 601px) {
+
 }

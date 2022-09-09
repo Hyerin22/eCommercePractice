@@ -19,7 +19,7 @@ import axios from "axios";
 
 export default function HamburgerMenu(props) {
   // const [open, setOpen] = useState(false);
-  const { onClick } = props;
+  // const { onClick } = props;
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
@@ -38,7 +38,10 @@ export default function HamburgerMenu(props) {
   const router = useRouter();
 
   return (
-    <div className="hamburgerCont" onClick={onClick}>
+    <div 
+      className="hamburgerCont" 
+      // onClick={onClick}
+    >
       <input type="checkbox" id="openSidebarMenu" />
       <label id="hamburger" htmlFor="openSidebarMenu">
         <div></div>
@@ -49,10 +52,7 @@ export default function HamburgerMenu(props) {
         <div className="forMargin" />
         {category.map((o, i) => (
           <div key={i}>
-            <HamburgerList 
-              id = {o.id}
-              title={o}
-            />
+            <HamburgerList id={o.id} title={o} />
           </div>
         ))}
       </nav>
